@@ -1,0 +1,30 @@
+﻿<div class="card shadow border-0 rounded-4">
+
+    <div class="card-body p-5">
+
+        <h2 class="fw-bold mb-4">
+            CSV Import Center
+        </h2>
+
+        <p class="text-muted mb-4">
+            Upload large shipment datasets using high-performance bulk import.
+        </p>
+
+        <form asp-controller="Import"
+              asp-action="Index"
+              method="post"
+              enctype="multipart/form-data">
+
+            <input type="file"
+                   id="file"
+                   name="file" />
+
+            <button type="submit">
+                TEST GÖNDER
+            </button>
+
+        </form>
+
+    </div>
+
+</div>

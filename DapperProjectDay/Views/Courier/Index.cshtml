@@ -1,0 +1,251 @@
+﻿@model IEnumerable<DapperProjectDay.Models.Courier>
+
+<div class="row mb-4">
+
+    <div class="col-md-3">
+
+        <div class="card shadow border-0 rounded-4"
+             style="transition:0.3s; cursor:pointer;">
+
+            <div class="card-body">
+
+                <h6 class="text-muted">
+                    Total Couriers
+                </h6>
+
+                <h2 class="fw-bold text-primary">
+                    14
+                </h2>
+
+                <p class="text-muted mb-0">
+                    Registered courier count
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card shadow border-0 rounded-4"
+             style="transition:0.3s; cursor:pointer;">
+
+            <div class="card-body">
+
+                <h6 class="text-muted">
+                    Active Couriers
+                </h6>
+
+                <h2 class="fw-bold text-success">
+                    12
+                </h2>
+
+                <p class="text-muted mb-0">
+                    Currently delivering shipments
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card shadow border-0 rounded-4"
+             style="transition:0.3s; cursor:pointer;">
+
+            <div class="card-body">
+
+                <h6 class="text-muted">
+                    Motorcycle Couriers
+                </h6>
+
+                <h2 class="fw-bold text-warning">
+                    8
+                </h2>
+
+                <p class="text-muted mb-0">
+                    Fast urban delivery team
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card shadow border-0 rounded-4"
+             style="transition:0.3s; cursor:pointer;">
+
+            <div class="card-body">
+
+                <h6 class="text-muted">
+                    Van Drivers
+                </h6>
+
+                <h2 class="fw-bold text-info">
+                    4
+                </h2>
+
+                <p class="text-muted mb-0">
+                    Heavy cargo transport
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card shadow border-0 rounded-4">
+
+    <div class="card-header d-flex justify-content-between align-items-center">
+
+        <div>
+
+            <h4 class="mb-1 fw-bold">
+
+                Courier Management
+
+            </h4>
+
+            <p class="text-muted mb-0">
+
+                Manage active courier operations and delivery teams
+
+            </p>
+
+        </div>
+
+        <a href="#"
+           class="btn btn-primary rounded-pill px-4">
+
+            New Courier
+
+        </a>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-light">
+
+                    <tr>
+
+                        <th>Courier</th>
+
+                        <th>Phone</th>
+
+                        <th>Vehicle Type</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+
+                                <div class="d-flex align-items-center">
+
+                                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                         width="45"
+                                         class="me-3 rounded-circle" />
+
+                                    <div>
+
+                                        <h6 class="mb-0 fw-semibold">
+                                            @item.FullName
+                                        </h6>
+
+                                        <small class="text-muted">
+                                            CargoTrack Courier
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+
+                                @item.Phone
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-label-primary">
+
+                                    @item.VehicleType
+
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-success">
+
+                                    Active
+
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <a href="/Courier/Detail/@item.CourierId"
+                                   class="btn btn-outline-primary btn-sm rounded-pill">
+
+                                    View Detail
+
+                                </a>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+    .card:hover {
+        transform: scale(1.02);
+        transition: 0.3s;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+
+</style>

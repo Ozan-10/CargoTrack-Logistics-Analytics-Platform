@@ -1,0 +1,79 @@
+﻿@model DapperProjectDay.Models.Shipment
+
+<div class="card">
+
+    <div class="card-header">
+        <h4 class="mb-0">
+
+            <i class="bx bx-package me-2"></i>
+
+            Edit Shipment
+
+        </h4>
+    </div>
+
+    <div class="card-body">
+
+        <form method="post">
+
+            <div class="mb-3">
+                <label>Tracking Code</label>
+                <input type="text"
+                       class="form-control"
+                       asp-for="TrackingCode" />
+            </div>
+
+            <div class="mb-3">
+                <label>Sender City</label>
+                <input type="text"
+                       class="form-control"
+                       asp-for="SenderCity" />
+            </div>
+
+            <div class="mb-3">
+                <label>Receiver City</label>
+                <input type="text"
+                       class="form-control"
+                       asp-for="ReceiverCity" />
+            </div>
+
+            <div class="mb-3">
+                <label>Status</label>
+
+                <select class="form-select"
+                        asp-for="Status">
+
+                    <option>Preparing</option>
+                    <option>Delivered</option>
+                    <option>Delayed</option>
+                    <option>In Transit</option>
+
+                </select>
+
+            </div>
+
+            <div class="mb-3">
+                <label>Weight</label>
+                <input type="number"
+                       class="form-control"
+                       asp-for="Weight" />
+            </div>
+
+            <div class="mb-3">
+                <label>Shipping Price</label>
+                <input type="number"
+                       class="form-control"
+                       asp-for="ShippingPrice" />
+            </div>
+
+            <button class="btn btn-primary btn-lg px-5">
+
+                Save Shipment
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>

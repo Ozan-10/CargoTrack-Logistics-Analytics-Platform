@@ -1,0 +1,463 @@
+﻿@model DapperProjectDay.Models.Courier
+
+<div class="row mb-4">
+
+    <div class="col-md-3">
+
+        <div class="card border-0 shadow-sm dashboard-card">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                        <small class="text-muted">
+                            Total Deliveries
+                        </small>
+
+                        <h2 class="fw-bold text-primary mb-0">
+                            12,450
+                        </h2>
+
+                    </div>
+
+                    <div class="icon-box bg-primary">
+
+                        <i class="bx bx-package text-white"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card border-0 shadow-sm dashboard-card">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                        <small class="text-muted">
+                            Success Rate
+                        </small>
+
+                        <h2 class="fw-bold text-success mb-0">
+                            %98.2
+                        </h2>
+
+                    </div>
+
+                    <div class="icon-box bg-success">
+
+                        <i class="bx bx-check-circle text-white"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card border-0 shadow-sm dashboard-card">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                        <small class="text-muted">
+                            Avg Delivery Time
+                        </small>
+
+                        <h2 class="fw-bold text-warning mb-0">
+                            2.1 Days
+                        </h2>
+
+                    </div>
+
+                    <div class="icon-box bg-warning">
+
+                        <i class="bx bx-time text-white"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card border-0 shadow-sm dashboard-card">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                        <small class="text-muted">
+                            Monthly Revenue
+                        </small>
+
+                        <h2 class="fw-bold text-info mb-0">
+                            ₺148K
+                        </h2>
+
+                    </div>
+
+                    <div class="icon-box bg-info">
+
+                        <i class="bx bx-wallet text-white"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-lg-4">
+
+        <div class="card border-0 shadow-sm dashboard-card mb-4">
+
+            <div class="card-body text-center">
+
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                     width="120"
+                     class="rounded-circle shadow-sm mb-4" />
+
+                <h2 class="fw-bold">
+                    @Model.FullName
+                </h2>
+
+                <p class="text-muted">
+                    @Model.VehicleType Courier
+                </p>
+
+                <span class="badge rounded-pill bg-success fs-6">
+                    Active Courier
+                </span>
+
+                <hr />
+
+                <div class="row text-center mb-4">
+
+                    <div class="col-4">
+
+                        <h5 class="fw-bold text-primary">
+                            4.9
+                        </h5>
+
+                        <small class="text-muted">
+                            Rating
+                        </small>
+
+                    </div>
+
+                    <div class="col-4">
+
+                        <h5 class="fw-bold text-success">
+                            12K+
+                        </h5>
+
+                        <small class="text-muted">
+                            Deliveries
+                        </small>
+
+                    </div>
+
+                    <div class="col-4">
+
+                        <h5 class="fw-bold text-warning">
+                            98%
+                        </h5>
+
+                        <small class="text-muted">
+                            Success
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <p class="mb-2">
+
+                    📞 @Model.Phone
+
+                </p>
+
+                <p class="mb-0">
+
+                    🚚 @Model.VehicleType
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-8">
+
+        <div class="card border-0 shadow-sm dashboard-card mb-4">
+
+            <div class="card-header bg-white border-0">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                        <h5 class="fw-bold mb-1">
+                            Monthly Delivery Performance
+                        </h5>
+
+                        <small class="text-muted">
+                            Delivery trend during the last 12 months
+                        </small>
+
+                    </div>
+
+                    <span class="badge rounded-pill bg-success fs-6">
+                        +18.4% Growth
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="card-body">
+
+                <canvas id="courierChart"
+                        height="120"></canvas>
+
+            </div>
+
+        </div>
+
+        <div class="card border-0 shadow-sm dashboard-card">
+
+            <div class="card-header bg-white">
+
+                <h5 class="fw-bold mb-0">
+
+                    Recent Deliveries
+
+                </h5>
+
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-hover align-middle">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Tracking</th>
+                            <th>City</th>
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>CTR-2001</td>
+
+                            <td>Istanbul</td>
+
+                            <td>
+
+                                <span class="badge rounded-pill bg-success">
+                                    Delivered
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>CTR-2002</td>
+
+                            <td>Ankara</td>
+
+                            <td>
+
+                                <span class="badge rounded-pill bg-warning">
+                                    In Transit
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>CTR-2003</td>
+
+                            <td>Izmir</td>
+
+                            <td>
+
+                                <span class="badge rounded-pill bg-danger">
+                                    Delayed
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+
+    <script>
+
+        const ctx =
+        document.getElementById('courierChart');
+
+        new Chart(ctx, {
+
+            type: 'line',
+
+            data: {
+
+                labels: [
+                    'Jan','Feb','Mar','Apr',
+                    'May','Jun','Jul','Aug',
+                    'Sep','Oct','Nov','Dec'
+                ],
+
+                datasets: [{
+
+                    label: 'Completed Deliveries',
+
+                    data: [
+                        820,910,1020,1140,
+                        1230,1360,1450,1510,
+                        1590,1700,1820,1950
+                    ],
+
+                    borderColor:'#696cff',
+
+                    backgroundColor:
+                    'rgba(105,108,255,.15)',
+
+                    fill:true,
+
+                    tension:.45,
+
+                    borderWidth:4,
+
+                    pointRadius:6,
+
+                    pointHoverRadius:8,
+
+                    pointBackgroundColor:'#696cff',
+
+                    pointBorderColor:'#fff',
+
+                    pointBorderWidth:3
+
+                }]
+            },
+
+            options:{
+
+                responsive:true,
+
+                plugins:{
+                    legend:{
+                        display:false
+                    }
+                },
+
+                scales:{
+
+                    y:{
+                        beginAtZero:true
+                    },
+
+                    x:{
+                        grid:{
+                            display:false
+                        }
+                    }
+
+                }
+
+            }
+
+        });
+
+    </script>
+
+}
+
+<style>
+
+    .dashboard-card {
+        transition: all .25s ease;
+    }
+
+        .dashboard-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,.12) !important;
+        }
+
+    .icon-box {
+        width: 60px;
+        height: 60px;
+        border-radius: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .icon-box i {
+            font-size: 28px;
+        }
+
+</style>

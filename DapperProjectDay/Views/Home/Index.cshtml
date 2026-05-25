@@ -1,0 +1,281 @@
+﻿@model DapperProjectDay.Models.DashboardStatistics
+
+<div class="row">
+
+    <!-- Total Shipments -->
+
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card border-0 shadow-sm dashboard-card">
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+                        <span class="text-muted text-uppercase small fw-semibold">
+                            Total Shipments
+                        </span>
+
+                        <h2 class="fw-bold mt-2 mb-1">
+                            @Model.TotalShipments.ToString("N0")
+                        </h2>
+
+                        <small class="text-success">
+                            <i class="bx bx-up-arrow-alt"></i>
+                            Active Dataset
+                        </small>
+                    </div>
+
+                    <div class="dashboard-icon bg-primary">
+                        <i class="bx bx-package text-white"></i>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Delivered -->
+
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card border-0 shadow-sm dashboard-card">
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+                        <span class="text-muted text-uppercase small fw-semibold">
+                            Delivered Orders
+                        </span>
+
+                        <h2 class="fw-bold text-success mt-2 mb-1">
+                            @Model.DeliveredOrders.ToString("N0")
+                        </h2>
+
+                        <small class="text-success">
+                            Successfully Delivered
+                        </small>
+                    </div>
+
+                    <div class="dashboard-icon bg-success">
+                        <i class="bx bx-check-circle text-white"></i>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Delayed -->
+
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card border-0 shadow-sm dashboard-card">
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+                        <span class="text-muted text-uppercase small fw-semibold">
+                            Delayed Shipments
+                        </span>
+
+                        <h2 class="fw-bold text-danger mt-2 mb-1">
+                            @Model.DelayedShipments.ToString("N0")
+                        </h2>
+
+                        <small class="text-danger">
+                            Requires Attention
+                        </small>
+                    </div>
+
+                    <div class="dashboard-icon bg-danger">
+                        <i class="bx bx-time text-white"></i>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Branches -->
+
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card border-0 shadow-sm dashboard-card">
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+                        <span class="text-muted text-uppercase small fw-semibold">
+                            Active Branches
+                        </span>
+
+                        <h2 class="fw-bold text-primary mt-2 mb-1">
+                            @Model.ActiveBranches
+                        </h2>
+
+                        <small class="text-primary">
+                            Operational Branches
+                        </small>
+                    </div>
+
+                    <div class="dashboard-icon bg-info">
+                        <i class="bx bx-buildings text-white"></i>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <!-- BAR CHART -->
+
+    <div class="col-lg-8">
+
+        <div class="card border-0 shadow-sm">
+
+            <div class="card-header bg-white border-0">
+
+                <h5 class="fw-bold mb-0">
+                    Monthly Shipment Volume
+                </h5>
+
+            </div>
+
+            <div class="card-body">
+
+                <canvas id="shipmentChart" height="120"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- PIE CHART -->
+
+    <div class="col-lg-4">
+
+        <div class="card border-0 shadow-sm">
+
+            <div class="card-header bg-white border-0">
+
+                <h5 class="fw-bold mb-0">
+                    Shipment Status Distribution
+                </h5>
+
+            </div>
+
+            <div class="card-body">
+
+                <canvas id="statusChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+    .dashboard-card {
+        transition: all .25s ease;
+        border-radius: 18px;
+    }
+
+        .dashboard-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 1rem 3rem rgba(0,0,0,.12) !important;
+        }
+
+    .dashboard-icon {
+        width: 65px;
+        height: 65px;
+        border-radius: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .dashboard-icon i {
+            font-size: 30px;
+        }
+
+</style>
+
+@section Scripts {
+
+    <script>
+
+        window.onload = function () {
+
+            const ctx =
+                document.getElementById('shipmentChart');
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: @Html.Raw(Json.Serialize(Model.Months)),
+                    datasets: [{
+                        label: 'Monthly Shipments',
+                        data: @Html.Raw(Json.Serialize(Model.MonthlyShipmentCounts)),
+                        backgroundColor: '#696cff',
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            const pieCtx =
+                document.getElementById('statusChart');
+
+            new Chart(pieCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: [
+                        'Delivered',
+                        'Delayed',
+                        'Transit',
+                        'Preparing'
+                    ],
+                    datasets: [{
+                        data: [
+                            @Model.DeliveredOrders,
+                            @Model.DelayedShipments,
+                            @Model.TransitCount,
+                            @Model.PreparingCount
+                        ],
+                        backgroundColor: [
+                            '#28c76f',
+                            '#ea5455',
+                            '#00cfe8',
+                            '#ff9f43'
+                        ]
+                    }]
+                },
+                options: {
+                    cutout: '55%'
+                }
+            });
+
+        }
+
+    </script>
+
+}

@@ -1,0 +1,153 @@
+﻿<div class="card border-0 shadow-sm">
+
+    <div class="card-body p-5">
+
+        <div class="mb-5">
+
+            <h2 class="fw-bold mb-2">
+                📦 Create New Shipment
+            </h2>
+
+            <p class="text-muted mb-0">
+                Create and manage shipment records in CargoTrack Logistics Platform.
+            </p>
+
+        </div>
+
+        <form method="post">
+
+            <div class="row">
+
+                <div class="col-md-12 mb-4">
+
+                    <label class="form-label fw-semibold">
+                        Tracking Code
+                    </label>
+
+                    <input type="text"
+                           class="form-control form-control-lg"
+                           placeholder="CTR-20260001" />
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                    <label class="form-label fw-semibold">
+                        Sender City
+                    </label>
+
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Istanbul" />
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                    <label class="form-label fw-semibold">
+                        Receiver City
+                    </label>
+
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Ankara" />
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                    <label class="form-label fw-semibold">
+                        Status
+                    </label>
+
+                    <select class="form-select">
+
+                        <option>Preparing</option>
+                        <option>In Transit</option>
+                        <option>Delivered</option>
+                        <option>Delayed</option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                    <label class="form-label fw-semibold">
+                        Weight (KG)
+                    </label>
+
+                    <input type="number"
+                           class="form-control"
+                           placeholder="4.5" />
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                    <label class="form-label fw-semibold">
+                        Shipping Price
+                    </label>
+
+                    <input type="number"
+                           class="form-control"
+                           placeholder="240" />
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                    <label class="form-label fw-semibold">
+                        Courier
+                    </label>
+
+                    <select class="form-select">
+
+                        <option>Ahmet Kaya</option>
+                        <option>Mehmet Demir</option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-12 mb-4">
+
+                    <label class="form-label fw-semibold">
+                        Branch
+                    </label>
+
+                    <select class="form-select">
+
+                        <option>Istanbul Central Branch</option>
+                        <option>Ankara Branch</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="d-flex gap-3">
+
+                <button class="btn btn-primary btn-lg px-5">
+
+                    <i class="bx bx-save"></i>
+
+                    Save Shipment
+
+                </button>
+
+                <button type="reset"
+                        class="btn btn-outline-secondary btn-lg">
+
+                    Reset Form
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
